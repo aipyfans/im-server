@@ -41,4 +41,4 @@ io.on('connection', function (socket) {
     });
 });
 
-module.exports = {koaApp, webServer};
+export default webServer;

@@ -1,10 +1,9 @@
-const model = require('./db-models');
-
+import model from './db-models.js';
 let User = model.User;
 
 (async () => {
     
-    var user = await User.create({
+    let user = await User.create({
         name: 'John',
         gender: false,
         email: 'john-' + Date.now() + '@garfield.pet',

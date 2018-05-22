@@ -1,7 +1,5 @@
 import ApiError from '../error';
-
-const model = require('../database/db-models');
-
+import model from '../database/db-models';
 let User = model.User;
 
 

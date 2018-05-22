@@ -1,13 +1,9 @@
-// require('babel-core/register')({
-//     presets: ['stage-3']
-// });
+import model from './db-models.js';
 
-const model = require('./db-models.js');
-
-model.sync().then(()=>{
+model.sync().then(() => {
     console.log('sync done');
     process.exit(0);
-}).catch((e)=>{
-    console.log('failed with: '+e);
+}).catch((e) => {
+    console.log('failed with: ' + e);
     process.exit(0);
 });

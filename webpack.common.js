@@ -1,22 +1,13 @@
 const path = require('path');
-const fs = require('fs');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-const nodeModules = {};
-fs.readdirSync('node_modules')
-    .filter(function (x) {
-        return ['.bin'].indexOf(x) === -1;
-    })
-    .forEach(function (mod) {
-        nodeModules[mod] = 'commonjs ' + mod;
-    });
+const _externals = require('externals-dependencies');
 
 
 module.exports = {
 
     entry: {
-        sio_server: ['babel-polyfill',path.resolve(__dirname, 'src/start.js')],
-        sio_client: ['babel-polyfill',path.resolve(__dirname, 'src/sio-client.js')]
+        sio_server: [path.resolve(__dirname, 'src/start.js')],
+        sio_client: [path.resolve(__dirname, 'src/sio-client.js')]
     },
 
     output: {
@@ -25,19 +16,24 @@ module.exports = {
     },
 
     target: 'node',
-    externals: nodeModules,
+    externals: _externals(),
     context: __dirname,
     node: {
-        __filename: false,
-        __dirname: true
+        console: true,
+        global: true,
+        process: true,
+        Buffer: true,
+        __filename: true,
+        __dirname: true,
+        setImmediate: true,
+        path: true,
     },
 
     module: {
         rules: [
             {
                 test: /\.(js)$/,
-                exclude: /(node_modules)/,
-                use: 'babel-loader'
+                use: 'babel-loader',
             }
         ]
     },

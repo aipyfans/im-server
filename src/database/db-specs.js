@@ -1,10 +1,6 @@
-// import Sequelize from 'sequelize';
-// import uuid from 'node-uuid';
-// import config from './config/config';
-
-const Sequelize = require('sequelize');
-const uuid = require('node-uuid');
-const config = require('./config/config');
+import Sequelize from 'sequelize';
+import uuid from 'node-uuid';
+import config from './config/config';
 
 console.log('init sequelize...');
 
@@ -126,4 +122,4 @@ for (let type of TYPES) {
 exp.ID = ID_TYPE;
 exp.generateId = generateId;
 
-module.exports = exp;
+export default exp;

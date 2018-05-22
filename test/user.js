@@ -1,4 +1,4 @@
-import {webServer} from "../src/app";
+import webServer from "../src/app";
 import request from "supertest";
 
 let server = webServer.listen(3002);

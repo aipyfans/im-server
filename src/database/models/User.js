@@ -1,6 +1,6 @@
-const db = require('../db-specs');
+import db from '../db-specs';
 
-module.exports = db.defineModel('users', {
+export default db.defineModel('users', {
     email: {
         type: db.STRING(100),
         unique: true

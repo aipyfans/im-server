@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import IO from 'socket.io-client';
 const socket = IO('http://localhost:3001');
 

@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 let config = null;
 
@@ -24,4 +24,4 @@ if (process.env.NODE_ENV === 'test') {
     }
 }
 
-module.exports = config;
+export default config;
