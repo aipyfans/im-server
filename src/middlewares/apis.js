@@ -4,7 +4,7 @@ import fs from 'fs';
 // add url-route in /controllers:
 
 function addMapping(router, mapping) {
-    for (let url in mapping) {
+    for (let url in mapping.default) {
         if (url.startsWith('GET ')) {
             var path = url.substring(4);
             router.get(path, mapping[url]);
@@ -38,6 +38,7 @@ function addControllers(router) {
         let context = require.context('../apis', true, /\.js$/);
         context.keys().forEach(api => {
             let mapping = context(api);
+            console.log(JSON.stringify(mapping));
             addMapping(router, mapping);
         });
 

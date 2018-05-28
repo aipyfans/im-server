@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const _externals = require('externals-dependencies');
@@ -12,7 +14,12 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name].js',
+        publicPath: '/'
+    },
+
+    resolve: {
+        extensions: ['.js'],
     },
 
     target: 'node',

@@ -1,0 +1,2 @@
+
+npm install -g koa koa-bodyparser koa-router mysql2 node-uuid sequelize socket.io

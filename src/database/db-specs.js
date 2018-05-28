@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 import uuid from 'node-uuid';
 import config from './config/config';
 
-console.log('init sequelize...');
+console.log(`init sequelize...`);
 
 function generateId() {
     return uuid.v4();

@@ -1,27 +1,21 @@
-import fs from 'fs';
+import defaultConfig from './config-default.js';
+import overrideConfig from './config-override.js';
+import testConfig from './config-test.js';
 
-let config = null;
+let config = {};
 
-if (process.env.NODE_ENV === 'test') {
-    const testConfig = require('./config-test.js');
-
-    console.log(`Load ${testConfig}...`);
-    config = testConfig;
-
-} else {
-    const defaultConfig = require('./config-default.js');
-    const overrideConfig = require('./config-override.js');
-
-    console.log(`Load ${defaultConfig}...`);
+if (process.env.NODE_ENV === 'production') {
+    console.log(`Load defaultConfig...`);
     config = defaultConfig;
     try {
-        if (fs.statSync(overrideConfig).isFile()) {
-            console.log(`Load ${overrideConfig}...`);
-            config = Object.assign(config, overrideConfig);
-        }
+        console.log(`Load overrideConfig...`);
+        config = Object.assign(config, overrideConfig);
     } catch (err) {
-        console.log(`Cannot load ${overrideConfig}.`);
+        console.log(`Cannot load ${err}.`);
     }
+} else {
+    console.log(`Load testConfig...`);
+    config = testConfig;
 }
 
 export default config;

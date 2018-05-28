@@ -3,6 +3,7 @@
 create database db_im;
 -------------------------------------------------------------------------------------
 grant all privileges on db_im.* to 'im'@'%' identified by 'im';
+grant all privileges on db_test.* to 'test'@'%' identified by 'test';
 grant all on *.* to root@'%' identified by '你的密码' with grant option;
 -------------------------------------------------------------------------------------
 

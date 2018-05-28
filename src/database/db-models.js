@@ -7,7 +7,6 @@ const exportModels = {};
 if (process.env.NODE_ENV === 'production') {
     let context = require.context('./models', true, /\.js$/);
     context.keys().forEach(model => {
-        console.log(model);
         let name = model.substring(2, model.length - 3);
         exportModels[name] = context(model);
     });
